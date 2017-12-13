@@ -1,5 +1,5 @@
 #RPG Game (THE HOUSE)
-#By Josh and Ian
+#By KingAneurnin
 print("""
         Hello and Welcome To The House!
     
@@ -129,7 +129,8 @@ rooms = {
 monsters = { 1: {"name" : "Grizzly Bear",
                  "mhp"  : random.randint(35, 65),
                  "matk" : random.randint(5, 20),
-                 "mdf"  : random.randint(5, 10)},
+                 "mdf"  : random.randint(5, 10),
+                 "mxp"  : 10},
              2: {"name" : "Spider",
                  "mhp"  : random.randint(5, 25),                 
                  "matk" : random.randint(2, 10),
