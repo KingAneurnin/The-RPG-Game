@@ -17,6 +17,7 @@ hp = 0
 atk = 0
 df = 0
 magic = 0
+xp = 0
 classTrue = False
 
 print("""
