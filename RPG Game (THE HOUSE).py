@@ -1,5 +1,5 @@
 #RPG Game (THE HOUSE)
-#By Josh and Ian
+#By KingAneurnin
 print("""
         Hello and Welcome To The House!
     
@@ -17,6 +17,7 @@ hp = 0
 atk = 0
 df = 0
 magic = 0
+xp = 0
 classTrue = False
 
 print("""
@@ -129,31 +130,38 @@ rooms = {
 monsters = { 1: {"name" : "Grizzly Bear",
                  "mhp"  : random.randint(35, 65),
                  "matk" : random.randint(5, 20),
-                 "mdf"  : random.randint(5, 10)},
+                 "mdf"  : random.randint(5, 10),
+                 "mxp"  : 10},
              2: {"name" : "Spider",
                  "mhp"  : random.randint(5, 25),                 
                  "matk" : random.randint(2, 10),
-                 "mdf"  : random.randint(1, 3)}, 
+                 "mdf"  : random.randint(1, 3),
+                 "mxp"  : 5}, 
              3: {"name" : "Tiger",
                  "mhp"  : random.randint(20, 30),                 
                  "matk" : random.randint(5, 15),
-                 "mdf"  : random.randint(5, 10)}, 
+                 "mdf"  : random.randint(5, 10),
+                 "mxp"  : 10}, 
              4: {"name" : "Sasquatch",
                  "mhp"  : random.randint(40, 70),                 
                  "matk" : random.randint(10, 15),
-                 "mdf"  : random.randint(5, 10)}, 
+                 "mdf"  : random.randint(5, 10),
+                 "mxp"  : 15}, 
              5: {"name" : "Coyote",
                  "mhp"  : random.randint(15, 35),                 
                  "matk" : random.randint(15, 20),
-                 "mdf"  : random.randint(5, 10)}, 
+                 "mdf"  : random.randint(5, 10),
+                 "mxp"  : 15}, 
              6: {"name" : "Wolf",
                  "mhp"  : random.randint(20, 25),
                  "matk" : random.randint(5, 10),
-                 "mdf"  : random.randint(10, 15)}, 
+                 "mdf"  : random.randint(10, 15),
+                 "mxp"  : 15}, 
              7: {"name" : "Ninja",
                  "mhp"  : random.randint(40, 80),                 
                  "matk" : random.randint(10, 15),
-                 "mdf"  : random.randint(10, 20)}
+                 "mdf"  : random.randint(10, 20),
+                 "mxp"  : 20}
            }
 
 #Sets inventory for item usage.
@@ -303,6 +311,8 @@ while hp > 0:
                 print("It has",mhp,"HP left!\n")
             elif mhp <= 0:
                 print("It has fallen!\n")
+                xp += monsters[monsterNumber]["mxp"]
+                print("You now have",xp,"XP.")
                 break
             else:
                 print("You wounded it! Its HP is now " + str(mhp) + "!\n")
@@ -313,5 +323,7 @@ while hp > 0:
                 input("You both are at a draw! You both flee the battle." +
                       "\n\nPress enter to continue.")
                 break
+
+        
               
 input("\n\nPress enter to exit the program.")
