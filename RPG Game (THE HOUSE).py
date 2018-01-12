@@ -13,12 +13,13 @@ import random
 
 #Introduces the class types and starting variables so no errors occur.
 
-hp = 0
-atk = 0
-df = 0
-magic = 0
-xp = 0
-classTrue = False
+hp = 0     #health points
+atk = 0    #attack points
+df = 0     #defense points
+magic = 0  #magic points (Mages Only)
+xp = 0     #experience points
+lxp = 5    #experience points to level up (increases over time)
+lvl = 1    #starting level
 
 print("""
 ==============================================================
@@ -33,6 +34,7 @@ Rogue: Weak, but hard to hit.   HP:  75 ATK:  7 DF: 10 MAG:  0
 
 player = input("\nWhat class do you wish to play as? ")
 
+classTrue = False
 while classTrue != True:
 
     if player.title() == "Warrior":
@@ -50,6 +52,11 @@ while classTrue != True:
         hp = 75
         atk = 7
         df = 10
+        classTrue = True
+    elif player.title() == "God": #For Game Testing
+        hp = 1
+        atk = 100
+        df = 100
         classTrue = True
     else:
         player = input("\aPlease enter a Valid Class. ")
@@ -216,6 +223,7 @@ while hp > 0:
                 
                 del rooms[currentRoom]["item"]
                 input("\nPress enter to continue.")
+                continue
             else:
                 input("No " + move[1] + " avalible to receive! Press enter to continue.")
     except:
@@ -312,7 +320,7 @@ while hp > 0:
             elif mhp <= 0:
                 print("It has fallen!\n")
                 xp += monsters[monsterNumber]["mxp"]
-                print("You now have",xp,"XP.")
+                print("You now have",xp,"XP." + "(+" + str(monsters[monsterNumber]["mxp"]) + ")")
                 break
             else:
                 print("You wounded it! Its HP is now " + str(mhp) + "!\n")
@@ -324,6 +332,12 @@ while hp > 0:
                       "\n\nPress enter to continue.")
                 break
 
-        
+    ### Level Up System ###
+    while xp >= lxp:
+        lvl += 1
+        print("You are now level " + str(lvl) + "!")
+        lxp *= 2
+    if xp < lxp:
+        print("You need",(lxp - xp),"more XP to level up again.")
               
 input("\n\nPress enter to exit the program.")
