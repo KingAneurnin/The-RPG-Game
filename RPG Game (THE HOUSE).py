@@ -274,6 +274,7 @@ while hp > 0:
                         df += 10
                         magic -= 15
                         print("\nYou now have",df,"Defense Points and",magic,"Magic.")
+                        input("\nPress enter to commence the battle!\n")
                         validChoice = True
                     elif decide == 2 and magic >= 5:
                         mhp = 0
@@ -286,14 +287,17 @@ while hp > 0:
                     elif magic >= 5:
                         print("VALID SPELL NOT CHOSEN! PLEASE TRY AGAIN!")
                     else:
-                        print("Your spell failed! You only have",magic,"Magic !")
+                        print("Your spell failed! You only have",magic,"Magic!")
+                        input("\nPress enter to commence the battle!\n")
                         validChoice = True
 
                 elif decide.title() == "No":
                     print("\nYou did not cast any spells!")
+                    input("\nPress enter to commence the battle!\n")
                     validChoice = True
         
-        input("\nPress enter to commence the battle!\n")
+        else:
+            input("\nPress enter to commence the battle!\n")
 
         #Automates the Battle
         
