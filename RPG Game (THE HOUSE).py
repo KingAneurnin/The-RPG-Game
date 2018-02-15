@@ -343,5 +343,6 @@ while hp > 0:
         lxp *= 2
     if xp < lxp:
         print("You need",(lxp - xp),"more XP to level up again.")
+    input("\nPress enter to continue.")
               
 input("\n\nPress enter to exit the program.")
