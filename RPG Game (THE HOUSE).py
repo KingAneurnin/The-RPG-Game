@@ -1,5 +1,5 @@
-#RPG Game (THE HOUSE)
-#By KingAneurnin
+# RPG Game (THE HOUSE)
+# By KingAneurnin
 print("""
         Hello and Welcome To The House!
     
@@ -8,18 +8,18 @@ print("""
         Please Choose Your Character Type:
 """)
 
-#Imports random for future use.
+# Imports random for future use.
 import random
 
-#Introduces the class types and starting variables so no errors occur.
+# Introduces the class types and starting variables so no errors occur.
 
-hp = 0     #health points
-atk = 0    #attack points
-df = 0     #defense points
-magic = 0  #magic points (Mages Only)
-xp = 0     #experience points
-lxp = 5    #experience points to level up (increases over time)
-lvl = 1    #starting level
+hp = 0  # health points
+atk = 0  # attack points
+df = 0  # defense points
+magic = 0  # magic points (Mages Only)
+xp = 0  # experience points
+lxp = 5  # experience points to level up (increases over time)
+lvl = 1  # starting level
 
 print("""
 ==============================================================
@@ -30,12 +30,12 @@ Mage: A powerful debuffer.      HP: 100 ATK:  5 DF:  5 MAG: 30
 Rogue: Weak, but hard to hit.   HP:  75 ATK:  7 DF: 10 MAG:  0
 ==============================================================""")
 
-#Ask the user for the class they wish to have and only allow a valid answer.
+# Ask the user for the class they wish to have and only allow a valid answer.
 
 player = input("\nWhat class do you wish to play as? ")
 
 classTrue = False
-while classTrue != True:
+while not classTrue:
 
     if player.title() == "Warrior":
         hp = 150
@@ -53,7 +53,7 @@ while classTrue != True:
         atk = 7
         df = 10
         classTrue = True
-    elif player.title() == "God": #For Game Testing
+    elif player.title() == "God":  # For Game Testing
         hp = 1
         atk = 100
         df = 100
@@ -61,13 +61,14 @@ while classTrue != True:
     else:
         player = input("\aPlease enter a Valid Class. ")
 
-#Shows the player their choice.
+# Shows the player their choice.
 
-print("\nYou have chosen the",player,"class, with\n",hp,"Health Points\n"
-      ,atk,"Attack Points\n",df,"Defense Points\n",magic,"Magic.")
+print("\nYou have chosen the", player, "class, with\n", hp, "Health Points\n"
+      , atk, "Attack Points\n", df, "Defense Points\n", magic, "Magic.")
 input("\nPress enter to continue.")
 
-#Shows status of player.
+
+# Shows status of player.
 
 def showStatus():
     print("\n=========================" + '''
@@ -89,15 +90,16 @@ def showStatus():
 |                                         |       S
 +-----------------------------------------+
 ''' +
-    "\n=========================")
+          "\n=========================")
     print("You are in the " + rooms[currentRoom]["name"])
     print("=========================")
     if "item" in rooms[currentRoom]:
         print("=========================")
         print("You see a " + rooms[currentRoom]["item"] + "!")
         print("=========================")
-        
-#Prints commands possible
+
+
+# Prints commands possible
 
 def controls():
     print("\nSay \"go [compass direction]\" to go a certain way where there is a door [] from your current location." +
@@ -105,82 +107,81 @@ def controls():
     print("\nSay \"get [item name]\" to get a certain item.")
 
 
-#Sets the rooms and items for the game.
+# Sets the rooms and items for the game.
 
 rooms = {
-            1: { "name" : "Atrium",
-                 "east" : 2,
-                 "west" : 4,
-                 "south": 6,
-                 "north": 7, },
-            2: { "name" : "Living Room",
-                 "north": 3,
-                 "west" : 1, },
-            3: { "name" : "Bedroom",
-                 "south": 2,
-                 "item" : "sword"},
-            4: { "name" : "Dining Room",
-                 "north": 5,
-                 "east" : 1,                  
-                 "item" : "steak" },
-            5: { "name" : "Kitchen",
-                 "south": 4, },
-            6: { "name" : "Yard",
-                 "north": 1, 
-                 "item" : "chicken"},
-            7: { "name" : "Court Yard",
-                 "south": 1, }
-        }
+    1: {"name": "Atrium",
+        "east": 2,
+        "west": 4,
+        "south": 6,
+        "north": 7, },
+    2: {"name": "Living Room",
+        "north": 3,
+        "west": 1, },
+    3: {"name": "Bedroom",
+        "south": 2,
+        "item": "sword"},
+    4: {"name": "Dining Room",
+        "north": 5,
+        "east": 1,
+        "item": "steak"},
+    5: {"name": "Kitchen",
+        "south": 4, },
+    6: {"name": "Yard",
+        "north": 1,
+        "item": "chicken"},
+    7: {"name": "Court Yard",
+        "south": 1, }
+}
 
-#Random Monster Generator
+# Random Monster Generator
 
-monsters = { 1: {"name" : "Grizzly Bear",
-                 "mhp"  : random.randint(35, 65),
-                 "matk" : random.randint(5, 20),
-                 "mdf"  : random.randint(5, 10),
-                 "mxp"  : 10},
-             2: {"name" : "Spider",
-                 "mhp"  : random.randint(5, 25),                 
-                 "matk" : random.randint(2, 10),
-                 "mdf"  : random.randint(1, 3),
-                 "mxp"  : 5}, 
-             3: {"name" : "Tiger",
-                 "mhp"  : random.randint(20, 30),                 
-                 "matk" : random.randint(5, 15),
-                 "mdf"  : random.randint(5, 10),
-                 "mxp"  : 10}, 
-             4: {"name" : "Sasquatch",
-                 "mhp"  : random.randint(40, 70),                 
-                 "matk" : random.randint(10, 15),
-                 "mdf"  : random.randint(5, 10),
-                 "mxp"  : 15}, 
-             5: {"name" : "Coyote",
-                 "mhp"  : random.randint(15, 35),                 
-                 "matk" : random.randint(15, 20),
-                 "mdf"  : random.randint(5, 10),
-                 "mxp"  : 15}, 
-             6: {"name" : "Wolf",
-                 "mhp"  : random.randint(20, 25),
-                 "matk" : random.randint(5, 10),
-                 "mdf"  : random.randint(10, 15),
-                 "mxp"  : 15}, 
-             7: {"name" : "Ninja",
-                 "mhp"  : random.randint(40, 80),                 
-                 "matk" : random.randint(10, 15),
-                 "mdf"  : random.randint(10, 20),
-                 "mxp"  : 20}
-           }
+monsters = {1: {"name": "Grizzly Bear",
+                "mhp": random.randint(35, 65),
+                "matk": random.randint(5, 20),
+                "mdf": random.randint(5, 10),
+                "mxp": 10},
+            2: {"name": "Spider",
+                "mhp": random.randint(5, 25),
+                "matk": random.randint(2, 10),
+                "mdf": random.randint(1, 3),
+                "mxp": 5},
+            3: {"name": "Tiger",
+                "mhp": random.randint(20, 30),
+                "matk": random.randint(5, 15),
+                "mdf": random.randint(5, 10),
+                "mxp": 10},
+            4: {"name": "Sasquatch",
+                "mhp": random.randint(40, 70),
+                "matk": random.randint(10, 15),
+                "mdf": random.randint(5, 10),
+                "mxp": 15},
+            5: {"name": "Coyote",
+                "mhp": random.randint(15, 35),
+                "matk": random.randint(15, 20),
+                "mdf": random.randint(5, 10),
+                "mxp": 15},
+            6: {"name": "Wolf",
+                "mhp": random.randint(20, 25),
+                "matk": random.randint(5, 10),
+                "mdf": random.randint(10, 15),
+                "mxp": 15},
+            7: {"name": "Ninja",
+                "mhp": random.randint(40, 80),
+                "matk": random.randint(10, 15),
+                "mdf": random.randint(10, 20),
+                "mxp": 20}
+            }
 
-#Sets inventory for item usage.
+# Sets inventory for item usage.
 
-inventory = [ "coins", ]
+inventory = ["coins", ]
 
-
-#Start Player in Atrium
+# Start Player in Atrium
 
 currentRoom = 1
 
-#Begins loop for playing until death.
+# Begins loop for playing until death.
 
 while hp > 0:
     showStatus()
@@ -203,8 +204,8 @@ while hp > 0:
                 print("You received the " + move[1] + "!")
                 inventory.append(rooms[currentRoom]["item"])
 
-                #Item Attribute Addition
-                
+                # Item Attribute Addition
+
                 if "steak" in inventory and "steak" in rooms[currentRoom]["item"]:
                     hp += 25
                     print("Your HP increased by 25! It is now " + str(hp) + "!")
@@ -220,74 +221,76 @@ while hp > 0:
                 if "sword" in inventory and "sword" in rooms[currentRoom]["item"]:
                     atk += 5
                     print("Your ATK increased by 5! It is now " + str(atk) + "!")
-                
+
                 del rooms[currentRoom]["item"]
                 input("\nPress enter to continue.")
                 continue
             else:
-                input("No " + move[1] + " avalible to receive! Press enter to continue.")
+                input("No " + move[1] + " available to receive! Press enter to continue.")
     except:
         input("\a\nINVALID INPUT! PLEASE TRY AGAIN! PRESS ENTER TO CONTINUE.\n")
         continue
 
-    #COMBAT SYSTEM/SIMULATOR:
+    # COMBAT SYSTEM/SIMULATOR:
     ###########################################################################
-    
-    x = random.randint(1,5)
 
-    #Calls Monster Into Battle 20% of Time
+    x = random.randint(1, 5)
+
+    # Calls Monster Into Battle 20% of Time
 
     if x == 1:
-       
+
         monsterNumber = random.randint(1, 7)
         monster = monsters[monsterNumber]
         monsterName = monsters[monsterNumber]["name"]
-        
+
         print("\nYou are attacked by a " + monsterName + "!")
-        
+
         mhp = monsters[monsterNumber]["mhp"]
         matk = monsters[monsterNumber]["matk"]
         mdf = monsters[monsterNumber]["mdf"]
-        
-        print("It has",mhp,"HP,",matk,"ATK, and",mdf,"DF!")
 
-        #Pre-Combat Choices for Mages w/ Tests for Validity
+        print("It has", mhp, "HP,", matk, "ATK, and", mdf, "DF!")
+
+        # Pre-Combat Choices for Mages w/ Tests for Validity
 
         validChoice = False
 
         if player.title() == "Mage":
 
-            while validChoice != True:
+            while not validChoice:
 
                 decide = input("\nWould you like to cast a spell? \"Yes\" or \"No\"? ")
 
                 if decide.title() == "Yes":
-                    try: decide = int(input("\nEnter the number associated with the spell you desire:" +
-                                   "\n\n1: INCREASE YOUR DEFENSE PERMANENTLY BY 10" +
-                                   "\nCOST: 15 MAGIC" +
-                                   "\n\n2: FIREBALL: KILL OPPONENT" +
-                                   "\nCOST:  5 MAGIC"
-                                   "\n\n> " ))
-                    except: print("SPELL DID NOT WORK!")
+                    try:
+                        decide = int(input("\nEnter the number associated with the spell you desire:" +
+                                           "\n\n1: INCREASE YOUR DEFENSE PERMANENTLY BY 10" +
+                                           "\nCOST: 15 MAGIC" +
+                                           "\n\n2: FIREBALL: KILL OPPONENT" +
+                                           "\nCOST:  5 MAGIC"
+                                           "\n\n> "))
+                    except:
+                        print("SPELL DID NOT WORK!")
 
                     if decide == 1 and magic >= 15:
                         df += 10
                         magic -= 15
-                        print("\nYou now have",df,"Defense Points and",magic,"Magic.")
+                        print("\nYou now have", df, "Defense Points and", magic, "Magic.")
                         input("\nPress enter to commence the battle!\n")
                         validChoice = True
                     elif decide == 2 and magic >= 5:
                         mhp = 0
                         magic -= 5
                         print("\nYou have slayed the " + monsterName + "!" +
-                              "\nYou have",magic,"Magic remaining.")
+                              "\nYou have", magic, "Magic remaining.")
                         input("\nPress enter to continue.")
                         validChoice = True
                         continue
                     elif magic >= 5:
                         print("VALID SPELL NOT CHOSEN! PLEASE TRY AGAIN!")
                     else:
-                        print("Your spell failed! You only have",magic,"Magic!")
+                        print("Your spell failed! You only have", magic, "Magic!")
                         input("\nPress enter to commence the battle!\n")
                         validChoice = True
 
@@ -295,36 +298,36 @@ while hp > 0:
                     print("\nYou did not cast any spells!")
                     input("\nPress enter to commence the battle!\n")
                     validChoice = True
-        
+
         else:
             input("\nPress enter to commence the battle!\n")
 
-        #Automates the Battle
-        
+        # Automates the Battle
+
         while mhp > 0 and hp > 0:
             shp = hp
             hp -= (matk - df)
             if hp > shp:
                 print("You are immune to their attack!")
                 hp = shp
-                print("You have",hp,"HP left!\n")
+                print("You have", hp, "HP left!\n")
             elif hp <= 0:
                 print("You have fallen!" +
-                      "\nGame Over!" )
+                      "\nGame Over!")
                 break
             else:
                 print("You are wounded! Your HP is now " + str(hp) + "!")
-            
+
             smhp = mhp
             mhp -= (atk - mdf)
             if mhp > smhp:
                 print("It is immune to your attack!")
                 mhp = smhp
-                print("It has",mhp,"HP left!\n")
+                print("It has", mhp, "HP left!\n")
             elif mhp <= 0:
                 print("It has fallen!\n")
                 xp += monsters[monsterNumber]["mxp"]
-                print("You now have",xp,"XP." + "(+" + str(monsters[monsterNumber]["mxp"]) + ")")
+                print("You now have", xp, "XP." + "(+" + str(monsters[monsterNumber]["mxp"]) + ")")
                 break
             else:
                 print("You wounded it! Its HP is now " + str(mhp) + "!\n")
@@ -337,12 +340,12 @@ while hp > 0:
                 break
 
     ### Level Up System ###
-    while xp >= lxp:
+    while xp >= lxp and hp > 0:
         lvl += 1
         print("You are now level " + str(lvl) + "!")
         lxp *= 2
     if xp < lxp:
-        print("You need",(lxp - xp),"more XP to level up again.")
+        print("You need", (lxp - xp), "more XP to level up again.")
     input("\nPress enter to continue.")
-              
+
 input("\n\nPress enter to exit the program.")
