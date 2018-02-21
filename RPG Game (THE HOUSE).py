@@ -1,5 +1,9 @@
 # RPG Game (THE HOUSE)
 # By KingAneurnin
+
+# Imports random for future use.
+import random
+
 print("""
         Hello and Welcome To The House!
     
@@ -7,9 +11,6 @@ print("""
         
         Please Choose Your Character Type:
 """)
-
-# Imports random for future use.
-import random
 
 # Introduces the class types and starting variables so no errors occur.
 
@@ -332,14 +333,14 @@ while hp > 0:
             else:
                 print("You wounded it! Its HP is now " + str(mhp) + "!\n")
 
-            ### For draws:
+            # For draws:
 
             if mhp == smhp and hp == shp:
                 input("You both are at a draw! You both flee the battle." +
                       "\n\nPress enter to continue.")
                 break
 
-    ### Level Up System ###
+    # Level Up System
     while xp >= lxp and hp > 0:
         lvl += 1
         print("You are now level " + str(lvl) + "!")
