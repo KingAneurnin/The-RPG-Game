@@ -1,0 +1,151 @@
+
+
+This Name is Going to be so long it will annoy many HP: 100 ATK: 5 DF: 5 MAG: 30
+==============================
+
+
+Dancing in Sunlight HP: 100 ATK: 5 DF: 5 MAG: 30
+==============================
+
+
+Dancing HP: 100 ATK: 5 DF: 5 MAG: 30
+==============================
+
+
+Dancing HP: 100 ATK: 5 DF: 5 MAG: 30
+==============================
+
+
+Wizard HP: 100 ATK: 5 DF: 5 MAG: 30
+==============================
+
+XXXXXXXXXX Game Ended XXXXXXXXXX
+
+
+Wizard HP: 100 ATK: 5 DF: 5 MAG: 30
+==============================
+
+You are attacked by a Tiger!
+It has 22 HP, 10 ATK, and 9 DF!
+
+You currently have 100 HP, 5 ATK, 5 DF, and 30 MAG!
+
+
+You have slayed the Tiger with a Fireball!
+You have 25 Magic remaining.
+
+You are attacked by a Wolf!
+It has 20 HP, 8 ATK, and 11 DF!
+
+You currently have 100 HP, 10 ATK, 5 DF, and 40 MAG!
+
+
+You now have 15 Defense Points and 25 Magic.
+You are immune to their attack!
+You have 100 HP left!
+It is immune to your attack!
+It has 20 HP left!
+You both are at a draw! You both flee the battle.
+
+
+You are attacked by a Wolf!
+It has 20 HP, 8 ATK, and 11 DF!
+
+You currently have 100 HP, 10 ATK, 15 DF, and 25 MAG!
+
+
+You have slayed the Wolf with a Fireball!
+You have 20 Magic remaining.
+
+You are attacked by a Grizzly Bear!
+It has 45 HP, 15 ATK, and 8 DF!
+
+You currently have 125 HP, 10 ATK, 15 DF, and 20 MAG!
+
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 43! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 41! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 39! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 37! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 35! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 33! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 31! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 29! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 27! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 25! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 23! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 21! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 19! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 17! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 15! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 13! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 11! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 9! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 7! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 5! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 3! (-2)
+You are immune to their attack!
+You have 125 HP left!
+You wounded it! Its HP is now 1! (-2)
+You are immune to their attack!
+You have 125 HP left!
+It has fallen!
+
+
+
+Dance HP: 100 ATK: 5 DF: 5 MAG: 30
+==============================
+
+You are attacked by a Grizzly Bear!
+It has 35 HP, 9 ATK, and 9 DF!
+
+You currently have 100 HP, 5 ATK, 5 DF, and 45 MAG!
+
+You now have 15 Defense Points and 30 Magic.
+You are immune to their attack!
+You have 100 HP left!
+It is immune to your attack!
+It has 35 HP left!
+You both are at a draw! You both flee the battle.
+
