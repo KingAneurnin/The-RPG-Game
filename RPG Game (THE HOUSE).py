@@ -10,9 +10,9 @@ def log(the_file, text, show=True):
     with open(the_file, "a+") as f:
         f.write(text)
         f.write("\n")
-        if show:
-            print(text)
-    f.close()
+        f.close()
+    if show:
+        print(text)
 
 
 print("""
@@ -285,7 +285,7 @@ while hp > 0:
         log("battle.txt", "It has " + str(mhp) + " HP, " + str(matk) + " ATK, and " + str(mdf) + " DF!\n")
 
         log("battle.txt", "You currently have " + str(hp) + " HP, " + str(atk) + " ATK, "
-            + str(df) + " DF, and " + str(magic) + " MAG!")
+            + str(df) + " DF, and " + str(magic) + " MAG!\n")
 
         # Pre-Combat Choices for Mages w/ Tests for Validity
 
