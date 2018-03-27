@@ -4,6 +4,17 @@
 # Imports random for future use.
 import random
 
+
+def log(the_file, text, show=True):
+    """Program used to log the combat data."""
+    with open(the_file, "a+") as f:
+        f.write(text)
+        f.write("\n")
+        f.close()
+    if show:
+        print(text)
+
+
 print("""
         Hello and Welcome To The House!
     
@@ -26,9 +37,9 @@ print("""
 ==============================================================
 Warrior: A powerful fighter.    HP: 150 ATK: 15 DF:  5 MAG:  0
 --------------------------------------------------------------
-Mage: A powerful debuffer.      HP: 100 ATK:  5 DF:  5 MAG: 30
+Mage: A powerful buffer.        HP: 100 ATK:  5 DF:  5 MAG: 30
 --------------------------------------------------------------
-Rogue: Weak, but hard to hit.   HP:  75 ATK:  7 DF: 10 MAG:  0
+Rouge: Weak, but hard to hit.   HP:  75 ATK:  7 DF: 10 MAG:  0
 ==============================================================""")
 
 # Ask the user for the class they wish to have and only allow a valid answer.
@@ -49,7 +60,7 @@ while not classTrue:
         df = 5
         magic = 30
         classTrue = True
-    elif player.title() == "Rogue":
+    elif player.title() == "Rouge":
         hp = 75
         atk = 7
         df = 10
@@ -66,13 +77,24 @@ while not classTrue:
 
 print("\nYou have chosen the", player, "class, with\n", hp, "Health Points\n"
       , atk, "Attack Points\n", df, "Defense Points\n", magic, "Magic.")
+
+# Asks for player name
+
+name = input("What is your character name?\n> ")
+
+# Logs name without printing for logging game sessions.
+
+log("battle.txt", ("\n\n" + name + " HP: " + str(hp) + " ATK: " + str(atk) + " DF: " + str(df) + " MAG: " + str(magic) +
+                   "\n=============================="), False)
+
 input("\nPress enter to continue.")
 
 
 # Shows status of player.
 
-def showStatus():
-    print("\n=========================" + '''
+def show_status():
+    print("\n" + "Name: " + name + " HP: " + str(hp) + " ATK: " + str(atk) + " DF: " + str(df) + " MAG: " + str(magic))
+    print("===========================================" + '''
 +-----------+---------------+-------------+
 |           |               |             |
 |           |               |             |
@@ -106,6 +128,7 @@ def controls():
     print("\nSay \"go [compass direction]\" to go a certain way where there is a door [] from your current location." +
           "\nCompass Directions = North, South, East, West.")
     print("\nSay \"get [item name]\" to get a certain item.")
+    print("\nSay \"end game\" to end the game.")
 
 
 # Sets the rooms and items for the game.
@@ -152,7 +175,7 @@ monsters = {1: {"name": "Grizzly Bear",
                 "matk": random.randint(5, 15),
                 "mdf": random.randint(5, 10),
                 "mxp": 10},
-            4: {"name": "Sasquatch",
+            4: {"name": "Werewolf",
                 "mhp": random.randint(40, 70),
                 "matk": random.randint(10, 15),
                 "mdf": random.randint(5, 10),
@@ -167,7 +190,7 @@ monsters = {1: {"name": "Grizzly Bear",
                 "matk": random.randint(5, 10),
                 "mdf": random.randint(10, 15),
                 "mxp": 15},
-            7: {"name": "Ninja",
+            7: {"name": "Assassin",
                 "mhp": random.randint(40, 80),
                 "matk": random.randint(10, 15),
                 "mdf": random.randint(10, 20),
@@ -185,7 +208,7 @@ currentRoom = 1
 # Begins loop for playing until death.
 
 while hp > 0:
-    showStatus()
+    show_status()
     controls()
     move = input("\n> ").lower().split()
 
@@ -195,7 +218,7 @@ while hp > 0:
                 currentRoom = rooms[currentRoom][move[1]]
             else:
                 input("You cannot go that way! Press enter to continue.")
-    except:
+    except IndexError:
         input("\a\nINVALID INPUT! PLEASE TRY AGAIN! PRESS ENTER TO CONTINUE.\n")
         continue
 
@@ -228,30 +251,41 @@ while hp > 0:
                 continue
             else:
                 input("No " + move[1] + " available to receive! Press enter to continue.")
-    except:
+    except IndexError:
+        input("\a\nINVALID INPUT! PLEASE TRY AGAIN! PRESS ENTER TO CONTINUE.\n")
+        continue
+
+    try:
+        if move[0] == "end":
+            if "game" == move[1]:
+                log("battle.txt", "\nXXXXXXXXXX Game Ended XXXXXXXXXX")
+                break
+    except IndexError:
         input("\a\nINVALID INPUT! PLEASE TRY AGAIN! PRESS ENTER TO CONTINUE.\n")
         continue
 
     # COMBAT SYSTEM/SIMULATOR:
     ###########################################################################
 
-    x = random.randint(1, 5)
+    x = random.randint(1, 4)
 
-    # Calls Monster Into Battle 20% of Time
+    # Calls Monster Into Battle 25% of Time & Logs for Battle Log
 
     if x == 1:
 
         monsterNumber = random.randint(1, 7)
-        monster = monsters[monsterNumber]
         monsterName = monsters[monsterNumber]["name"]
 
-        print("\nYou are attacked by a " + monsterName + "!")
+        log("battle.txt", "\nYou are attacked by a " + monsterName + "!")
 
         mhp = monsters[monsterNumber]["mhp"]
         matk = monsters[monsterNumber]["matk"]
         mdf = monsters[monsterNumber]["mdf"]
 
-        print("It has", mhp, "HP,", matk, "ATK, and", mdf, "DF!")
+        log("battle.txt", "It has " + str(mhp) + " HP, " + str(matk) + " ATK, and " + str(mdf) + " DF!\n")
+
+        log("battle.txt", "You currently have " + str(hp) + " HP, " + str(atk) + " ATK, "
+            + str(df) + " DF, and " + str(magic) + " MAG!\n")
 
         # Pre-Combat Choices for Mages w/ Tests for Validity
 
@@ -271,20 +305,21 @@ while hp > 0:
                                            "\n\n2: FIREBALL: KILL OPPONENT" +
                                            "\nCOST:  5 MAGIC"
                                            "\n\n> "))
-                    except:
+                    except TypeError:
                         print("SPELL DID NOT WORK!")
 
                     if decide == 1 and magic >= 15:
                         df += 10
                         magic -= 15
-                        print("\nYou now have", df, "Defense Points and", magic, "Magic.")
+                        log("battle.txt",
+                            ("\nYou now have " + str(df) + " Defense Points and " + str(magic) + " Magic."))
                         input("\nPress enter to commence the battle!\n")
                         validChoice = True
                     elif decide == 2 and magic >= 5:
                         mhp = 0
                         magic -= 5
-                        print("\nYou have slayed the " + monsterName + "!" +
-                              "\nYou have", magic, "Magic remaining.")
+                        log("battle.txt", "\nYou have slayed the " + monsterName + " with a Fireball!" +
+                            "\nYou have " + str(magic) + " Magic remaining.")
                         input("\nPress enter to continue.")
                         validChoice = True
                         continue
@@ -303,41 +338,41 @@ while hp > 0:
         else:
             input("\nPress enter to commence the battle!\n")
 
-        # Automates the Battle
+        # Automates the Battle & Records
 
         while mhp > 0 and hp > 0:
             shp = hp
             hp -= (matk - df)
-            if hp > shp:
-                print("You are immune to their attack!")
+            if hp > shp or (matk - df) == 0:
+                log("battle.txt", "You are immune to their attack!")
                 hp = shp
-                print("You have", hp, "HP left!\n")
+                log("battle.txt", ("You have " + str(hp) + " HP left!"))
             elif hp <= 0:
-                print("You have fallen!" +
-                      "\nGame Over!")
+                log("battle.txt", "You have fallen!" +
+                    "\nGame Over!\n")
                 break
             else:
-                print("You are wounded! Your HP is now " + str(hp) + "!")
+                log("battle.txt", ("You are wounded! Your HP is now " + str(hp) + "!" + " (-" + str(matk - df) + ")"))
 
             smhp = mhp
             mhp -= (atk - mdf)
-            if mhp > smhp:
-                print("It is immune to your attack!")
+            if mhp > smhp or (atk - mdf) == 0:
+                log("battle.txt", "It is immune to your attack!")
                 mhp = smhp
-                print("It has", mhp, "HP left!\n")
+                log("battle.txt", ("It has " + str(mhp) + " HP left!"))
             elif mhp <= 0:
-                print("It has fallen!\n")
+                log("battle.txt", "It has fallen!\n")
                 xp += monsters[monsterNumber]["mxp"]
                 print("You now have", xp, "XP." + "(+" + str(monsters[monsterNumber]["mxp"]) + ")")
                 break
             else:
-                print("You wounded it! Its HP is now " + str(mhp) + "!\n")
+                log("battle.txt", ("You wounded it! Its HP is now " + str(mhp) + "!" + " (-" + str(atk - mdf) + ")"))
 
             # For draws:
 
             if mhp == smhp and hp == shp:
-                input("You both are at a draw! You both flee the battle." +
-                      "\n\nPress enter to continue.")
+                log("battle.txt", "You both are at a draw! You both flee the battle.\n")
+                input("\nPress enter to continue.")
                 break
 
     # Level Up System
@@ -345,8 +380,8 @@ while hp > 0:
         lvl += 1
         print("You are now level " + str(lvl) + "!")
         lxp *= 2
-    if xp < lxp:
-        print("You need", (lxp - xp), "more XP to level up again.")
-    input("\nPress enter to continue.")
+        if xp < lxp:
+            print("You need", (lxp - xp), "more XP to level up again.")
+        input("\nPress enter to continue.\n")
 
-input("\n\nPress enter to exit the program.")
+input("\nPress enter to exit the program.")
